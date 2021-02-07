@@ -1,0 +1,12 @@
+<div class="page-container">
+  <h1 mb-2><%= @recipe.name %></h1>
+  <div class="main-image">
+    <% if @recipe.photo.attached? %>
+      <%= cl_image_tag @recipe.photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  </div>
+  <h2>Zutaten</h2>
+  
+  <h2>Zubereitung</h2>
+  <%= @recipe.description %>
+</div>

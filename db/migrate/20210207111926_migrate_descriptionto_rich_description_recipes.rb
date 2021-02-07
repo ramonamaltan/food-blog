@@ -1,14 +1,14 @@
 class MigrateDescriptiontoRichDescriptionRecipes < ActiveRecord::Migration[6.0]
   def up
     Recipe.find_each do |recipe|
-      recipe.update(rich_description: recipe.description)
+      recipe.update(rich_body: recipe.description)
     end
   end
 
   def down
     Recipe.find_each do |recipe|
-      recipe.update(description: recipe.rich_description)
-      recipe.update(rich_description: nil)
+      recipe.update(description: recipe.rich_body)
+      recipe.update(rich_body: nil)
     end
   end
 end
