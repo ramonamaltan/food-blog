@@ -1,6 +1,17 @@
-<h1>Alle Rezepte</h1>
-<% @recipes.each do |recipe| %>
-  <%= recipe.name %>
-<% end %>
-
-<%= link_to 'New Recipe', new_recipe_path %>
+<div class="page-container">
+  <h1 class="mb-3">Alle Rezepte</h1>
+  <div class="cards">
+    <% @recipes.each do |recipe| %>
+      <div class="recipe-card">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <div class="recipe-infos">
+          <h2><%= recipe.name %></h2>
+          <% recipe.categories.each do |category| %>
+            <%= category.name %>
+          <% end %> 
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to 'Rezept hinzufügen', new_recipe_path, class: "btn-petrol mt-3" %>
+</div>

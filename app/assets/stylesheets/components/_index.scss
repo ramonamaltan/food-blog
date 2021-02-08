@@ -4,17 +4,4 @@
 @import "navbar";
 @import "actiontext";
 @import "buttons";
-
-body {
-  background: white;
-}
-
-.page-container {
-  max-width: 80vw;
-  margin: 0 auto;
-  margin-top: 4%;
-}
-
-h1, h2, p {
-  margin: 0;
-}
+@import "grid";

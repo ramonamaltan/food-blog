@@ -6,3 +6,27 @@
   background: white;
   border-radius: 2px;
 }
+
+.recipe-card {
+  margin-bottom: 32px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+  img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .recipe-infos {
+    padding: 16px;
+  }
+  
+}
