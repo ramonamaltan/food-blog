@@ -12,7 +12,7 @@
       <% end %>
         
         <div class="recipe-infos">
-          <h2><%= recipe.name %></h2>
+          <h2><%= link_to recipe.name, recipe_path(recipe) %></h2>
           <% recipe.categories.each do |category| %>
             <%= category.name %>
           <% end %> 
