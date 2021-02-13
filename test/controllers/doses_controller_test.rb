@@ -3,6 +3,7 @@ require 'test_helper'
 class DosesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @recipe = recipes(:one)
+    @ingredient = ingredients(:one)
   end
 
   test "should get new" do
@@ -17,7 +18,7 @@ class DosesControllerTest < ActionDispatch::IntegrationTest
     login_as users(:one)
 
     assert_difference("Dose.count") do
-      post recipe_doses_url(@recipe), params: { dose: { unit: 'grams', amount: 200 } }
+      post recipe_doses_url(@recipe), params: { dose: { unit: 'grams', amount: 200, recipe: @recipe, ingredient: @ingredient } }
     end
   end
 end

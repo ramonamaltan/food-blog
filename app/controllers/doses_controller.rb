@@ -13,7 +13,7 @@ class DosesController < ApplicationController
     @dose.create_ingredient(name: params[:dose][:ingredient_attributes][:name])
     @dose.recipe = @recipe
     if @dose.save
-      redirect_to recipes_path
+      redirect_to new_recipe_dose_path(@recipe)
     else
       render :new
     end
