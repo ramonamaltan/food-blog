@@ -10,7 +10,7 @@ class DosesController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @dose = Dose.new(dose_params)
     authorize @dose
-    @dose.create_ingredient(name: 'test')
+    @dose.create_ingredient(name: params[:dose][:ingredient_attributes][:name])
     @dose.recipe = @recipe
     if @dose.save
       redirect_to recipes_path
