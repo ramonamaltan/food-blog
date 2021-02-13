@@ -12,4 +12,12 @@ class DosesControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
   end
+
+  test "should create dose" do
+    login_as users(:one)
+
+    assert_difference("Dose.count") do
+      post recipe_doses_url(@recipe), params: { dose: { unit: 'grams', amount: 200 } }
+    end
+  end
 end
