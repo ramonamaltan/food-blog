@@ -1,9 +1,16 @@
 <div class="container my-5">
   <h1 class="m-5">Add an Ingredient</h1>
-  <%= simple_form_for [@recipe, @dose], html: { class: "form-group m-5"} do |f| %>
-    <%= f.association :ingredient, prompt: 'Choose ingredient', input_html: {class: "form-control"} %>
+  <%= simple_form_for [@recipe, @dose], html: { class: "form-group m-5"}, remote: true do |f| %>
+      <% @dose.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     <%= f.input :amount, label: 'How much?', prompt: 'Choose dose?', input_html: {class: "form-control"} %>
     <%= f.input :unit %>
+
+    <%= f.simple_fields_for :ingredient do |ingredient| %>
+    <%= ingredient.input :name %>
+    <% end %>
+
     <%= f.submit 'Add ingredient', class: 'btn btn-strong mt-3' %>
     <% end %>
 </div>
