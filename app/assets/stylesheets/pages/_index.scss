@@ -1,6 +1,7 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "new";
+@import "show";
 
 body {
   background: white;
@@ -20,7 +21,7 @@ body {
   }
 }
 
-h1, h2, p {
+h1, h2, h3, p {
   margin: 0;
 }
 
@@ -35,4 +36,8 @@ a:hover {
 ul {
   list-style: none;
   padding: 0;
+}
+
+h4 {
+  font-weight: bold;
 }

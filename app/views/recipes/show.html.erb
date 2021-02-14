@@ -1,22 +1,24 @@
 <div class="page-container">
   <h1><%= @recipe.name %></h1>
-  
-  <div class="main-image my-4">
-    <% if @recipe.photo.attached? %>
-      <%= cl_image_tag @recipe.photo.key, height: 300, width: 270, crop: :fill %>
-    <% end %>
+
+  <div class="desktop-flex my-5">
+    <div class="main-image">
+      <% if @recipe.photo.attached? %>
+        <%= cl_image_tag @recipe.photo.key, height: 300, width: 270, crop: :fill %>
+      <% end %>
+    </div>
+
+    <div class="ingredients">
+      <h4>Zutaten</h4>
+      <ul>
+        <% @recipe.doses.each do |dose| %>
+          <li><%= dose.amount %> <%= dose.unit %>
+          <%= dose.ingredient.name %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 
-  <div class="ingredients mb-4">
-    <h4>Zutaten</h4>
-    <ul>
-      <% @recipe.doses.each do |dose| %>
-        <li><%= dose.amount %> <%= dose.unit %>
-        <%= dose.ingredient.name %></li>
-      <% end %>
-    </ul>
-  </div>
-  
   <div class="steps">
     <h4>Zubereitung</h4>
     <div class="cooking-steps">

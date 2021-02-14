@@ -1,0 +1,14 @@
+.ingredients {
+  margin-top: 1.5rem;
+}
+
+@media(min-width: 740px) {
+  .desktop-flex {
+    display: flex;
+
+    .ingredients {
+      margin-left: 10%;
+      margin-top: 0;
+    }
+  }
+}
