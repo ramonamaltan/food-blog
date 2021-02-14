@@ -18,7 +18,8 @@ class DosesControllerTest < ActionDispatch::IntegrationTest
     login_as users(:one)
 
     assert_difference("Dose.count") do
-      post recipe_doses_url(@recipe), params: { dose: { unit: 'grams', amount: 200, recipe: @recipe, ingredient: @ingredient } }
+      post recipe_doses_url(@recipe), params: { dose: { unit: 'grams', amount: 200, recipe_id: @recipe.id, ingredient_attributes: [2, 'something'] } }
+      puts assigns(:dose).errors.full_message
     end
   end
 end

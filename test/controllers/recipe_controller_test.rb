@@ -26,7 +26,7 @@ class RecipeControllerTest < ActionDispatch::IntegrationTest
     login_as users(:one)
 
     assert_difference('Recipe.count') do
-      post recipes_url, params: { recipe: { name: 'Paella', user: user } }
+      post recipes_url, params: { recipe: { name: 'Paella', user: user, photo: fixture_file_upload('files/yum.jpg') } }
     end
   end
 end
