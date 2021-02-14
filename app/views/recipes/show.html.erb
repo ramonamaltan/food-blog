@@ -23,9 +23,9 @@
   </div>
 
   <div class="steps">
-              <% @recipe.categories.each do |category| %>
-            <%= category.name %>
-          <% end %> 
+    <% @recipe.categories.each do |category| %>
+      <%= category.name %>
+    <% end %> 
     <h4>Zubereitung</h4>
     <div class="cooking-steps">
       <%= @recipe.description %>
