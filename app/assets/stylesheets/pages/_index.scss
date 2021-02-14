@@ -7,9 +7,9 @@ body {
 }
 
 .page-container {
-  max-width: 80vw;
+  max-width: 75vw;
   margin: 0 auto;
-  margin-top: 4%;
+  margin-top: 8%;
 }
 
 h1, h2, p {
@@ -22,4 +22,9 @@ a {
 
 a:hover {
   text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
 }
