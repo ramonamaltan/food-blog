@@ -4,12 +4,19 @@
     <div class="form-group">
       <%= form.text_field :name, placeholder: 'Name für dein Rezept' , class: "form-control", required: true %>
     </div>
+
+    <div class="form-group">
+      <%= form.fields_for :categories do |cat_form| %>
+        <%= cat_form.text_field :name, placeholder: 'Rezeptkategorie', class: "form-control", required: true  %>
+      <% end %>
+    </div>
+
     <div class="form-group mt-5">
       <%= form.rich_text_area :description, placeholder: 'Beschreibe die Zubereitung Schritt für Schritt' , class: "form-control" %>
     </div>
     <div class="form-group mt-5 mb-5">
-      <%= form.label :photo, '📷 Lade ein Foto hoch', class: "upload-photo" %>
-      <span style="display:none"><%= form.file_field :photo %></span>
+      <i class="fas fa-camera-retro"></i>  <%= form.label :photo, 'Lade ein Foto hoch' %>  <i class="fas fa-camera-retro"></i>
+      <%= form.file_field :photo, required: true, class: 'form-control', style: 'border:none; padding:0;' %>
     </div>
     <%= form.submit 'Zutaten hinzufügen', class: "btn-petrol" %>
   <% end %>

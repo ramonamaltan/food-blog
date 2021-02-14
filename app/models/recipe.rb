@@ -4,9 +4,11 @@ class Recipe < ApplicationRecord
   has_many :doses, dependent: :destroy
   has_many :ingredients, through: :doses
 
-  validates :name, uniqueness: true
-  validates :name, presence: true
-
   has_one_attached :photo
   has_rich_text :description
+  
+  validates :name, uniqueness: true
+  validates :name, :photo, presence: true
+
+  accepts_nested_attributes_for :categories
 end
