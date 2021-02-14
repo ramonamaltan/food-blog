@@ -2,11 +2,13 @@
   <h3 class="mb-4">Zutaten hinzufügen</h3>
 
   <div class="ingredients mb-5">
+  <% unless @recipe.ingredients.blank? %>
     <h5>Bereits hinzugefügt:</h5>
     <ul><% @recipe.ingredients.each do |ingredient| %>
       <li><%= ingredient.dose.amount %> <%= ingredient.dose.unit %>
       <%= ingredient.name %></li>  
     <% end %></ul>
+  <% end %>
   </div>
 
   <%= simple_form_for [@recipe, @dose], html: { class: "form-group"}, remote: true do |f| %>
