@@ -1,7 +1,8 @@
 <div class="page-container">
-  <h3 class="my-5">Zutaten hinzufügen</h3>
+  <h3 class="mb-4">Zutaten hinzufügen</h3>
 
   <div class="ingredients mb-5">
+    <h5>Bereits hinzugefügt:</h5>
     <ul><% @recipe.ingredients.each do |ingredient| %>
       <li><%= ingredient.dose.amount %> <%= ingredient.dose.unit %>
       <%= ingredient.name %></li>  

@@ -7,9 +7,17 @@ body {
 }
 
 .page-container {
-  max-width: 75vw;
   margin: 0 auto;
   margin-top: 8%;
+  margin-bottom: 12%;
+  max-width: 75vw;
+}
+
+@media (min-width: 1000px) {
+  .page-container {
+    margin-top: 4%;
+    max-width: 60vw;
+  }
 }
 
 h1, h2, p {
