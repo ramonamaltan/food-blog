@@ -1,20 +1,20 @@
 <div class="page-container">
-  <h1 mb-2><%= @recipe.name %></h1>
+  <h1><%= @recipe.name %></h1>
   
-  <div class="main-image">
+  <div class="main-image my-4">
     <% if @recipe.photo.attached? %>
-      <%= cl_image_tag @recipe.photo.key, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag @recipe.photo.key, height: 300, width: 270, crop: :fill %>
     <% end %>
   </div>
 
-  <div class="ingredients">
+  <div class="ingredients mb-4">
     <h4>Zutaten</h4>
-    <div class="ingredient-list">
+    <ul>
       <% @recipe.doses.each do |dose| %>
-        <%= dose.amount %> <%= dose.unit %>
-        <%= dose.ingredient.name %>
+        <li><%= dose.amount %> <%= dose.unit %>
+        <%= dose.ingredient.name %></li>
       <% end %>
-    </div>
+    </ul>
   </div>
   
   <div class="steps">
@@ -23,4 +23,6 @@
       <%= @recipe.description %>
     </div>
   </div>
+
+  <%= link_to 'Alle Rezepte', recipes_path, class: 'btn-petrol my-5' %>
 </div>
