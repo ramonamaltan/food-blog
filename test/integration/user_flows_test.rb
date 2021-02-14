@@ -9,7 +9,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     post "/recipes",
-      params: { recipe: { name: "new recipe", user: user } }
+      params: { recipe: { name: "new recipe", user: user, photo: fixture_file_upload('files/yum.jpg') } }
     assert_response :redirect
     follow_redirect!
     assert_response :success
