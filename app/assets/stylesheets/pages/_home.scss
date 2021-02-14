@@ -1,1 +1,6 @@
-// Specific CSS for your home-page
+@media(min-width: 660px) {
+  .desktop-button-flex {
+    display: flex;
+    justify-content: space-between;
+  }
+}
