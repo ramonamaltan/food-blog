@@ -1,5 +1,13 @@
 <div class="container my-5">
   <h1 class="m-5">Add an Ingredient</h1>
+
+  <div class="ingredients">
+    <ul><% @recipe.ingredients.each do |ingredient| %>
+      <li><%= ingredient.dose.amount %><%= ingredient.dose.unit %>
+      <%= ingredient.name %></li>  
+    <% end %></ul>
+  </div>
+  
   <%= simple_form_for [@recipe, @dose], html: { class: "form-group m-5"}, remote: true do |f| %>
       <% @dose.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
