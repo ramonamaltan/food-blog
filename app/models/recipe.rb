@@ -11,4 +11,10 @@ class Recipe < ApplicationRecord
   validates :name, :photo, presence: true
 
   accepts_nested_attributes_for :categories
+
+  scope :filter_by_name, lambda { |keyword| where('lower(name) LIKE ?', "#{keyword.downcase}") }
+  scope :sort_by_most_recent, lambda { order(created_at: :desc) }
+  scope :sort_by_alphabet, lambda { order(:name) }
+  # scope :sort_by_ingredient
+  # scope :sort_by_category
 end
