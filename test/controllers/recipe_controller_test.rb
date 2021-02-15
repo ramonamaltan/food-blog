@@ -23,10 +23,19 @@ class RecipeControllerTest < ActionDispatch::IntegrationTest
 
   test "should create recipe" do
     user = users(:one)
-    login_as users(:one)
+    login_as user
 
     assert_difference('Recipe.count') do
       post recipes_url, params: { recipe: { name: 'Paella', user: user, photo: fixture_file_upload('files/yum.jpg') } }
     end
+  end
+
+  test "should destroy recipe" do
+    login_as users(:one)
+
+    assert_difference('Recipe.count', -1) do
+      delete recipe_url(@recipe)
+    end
+    assert_response :no_content
   end
 end
