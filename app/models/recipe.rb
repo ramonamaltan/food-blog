@@ -15,10 +15,14 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :categories
 
   pg_search_scope :search_by_name,
-  against: [ :name ],
-  using: {
-    tsearch: { prefix: true }
-  }
+    against: [ :name ],
+    associated_against: {
+      categories: [:name],
+      ingredients: [:name]
+    },
+    using: {
+      tsearch: { prefix: true, any_word: true }
+    }
 
   scope :sort_by_most_recent, lambda { order(created_at: :desc) }
   scope :sort_by_alphabet, lambda { order(:name) }
