@@ -1,13 +1,13 @@
 class DosesController < ApplicationController
+  before_action :set_recipe
+
   def new
-    @recipe = Recipe.find(params[:recipe_id])
     @dose = Dose.new
     @dose.build_ingredient
     authorize @dose
   end
 
   def create
-    @recipe = Recipe.find(params[:recipe_id])
     @dose = Dose.new(dose_params)
     authorize @dose
     @dose.create_ingredient(name: params[:dose][:ingredient_attributes][:name])
@@ -17,6 +17,18 @@ class DosesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    recipe.doses.each do |dose|
+      dose.destroy
+    end
+  end
+
+  private
+
+  def set_recipe
+    @recipe = Recipe.find(params[:recipe_id])
   end
 
   def dose_params

@@ -21,4 +21,14 @@ class DosesControllerTest < ActionDispatch::IntegrationTest
   #     post recipe_doses_url(@recipe), params: { dose: { unit: 'grams', amount: 200, recipe_id: @recipe.id, ingredient_attributes: { id: @ingredient.id, name: @ingredient.name } } }
   #   end
   # end
+
+  test 'should destroy dose' do
+    @dose = doses(:one)
+
+    assert_difference "Dose.count", -1 do
+      @dose.destroy
+    end
+
+    assert_response :no_content
+  end
 end
