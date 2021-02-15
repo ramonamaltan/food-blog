@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :find_recipe, only: [:edit, :update, :destroy]
   def index
     @recipes = policy_scope(Recipe).where(nil)
     @recipes = Recipe.search_by_name(params[:search]) if params[:search].present?
@@ -29,17 +30,28 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
     authorize @recipe
   end
 
+  def update
+    authorize @recipe
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe)
+    else
+      render :edit
+    end
+  end
+
   def destroy
-    @recipe = Recipe.find(params[:id])
     authorize @recipe
     @recipe.destroy
   end
 
   private
+
+  def find_recipe
+    @recipe = Recipe.find(params[:id])
+  end
 
   def recipe_params
     params.require(:recipe).permit(:name, :description, :photo, categories_attributes: [:id, :name])

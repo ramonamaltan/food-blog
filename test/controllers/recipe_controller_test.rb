@@ -28,6 +28,8 @@ class RecipeControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Recipe.count') do
       post recipes_url, params: { recipe: { name: 'Paella', user: @user, photo: fixture_file_upload('files/yum.jpg') } }
     end
+    
+    assert_redirected_to new_recipe_dose_url(Recipe.last)
   end
 
   test "should get edit" do
@@ -37,9 +39,12 @@ class RecipeControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test "should update recipe" do
-    
-  # end
+  test "should update recipe" do
+    login_as @user
+    patch recipe_url(@recipe), params: { recipe: { name: 'Another Spanish Dish', user: @user, photo: fixture_file_upload('files/yum.jpg') } }
+
+    assert_redirected_to recipe_url(@recipe)
+  end
 
   test "should destroy recipe" do
     login_as @user
