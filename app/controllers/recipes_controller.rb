@@ -28,6 +28,11 @@ class RecipesController < ApplicationController
     end
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+    authorize @recipe
+  end
+
   def destroy
     @recipe = Recipe.find(params[:id])
     authorize @recipe

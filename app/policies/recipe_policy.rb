@@ -13,6 +13,10 @@ class RecipePolicy < ApplicationPolicy
     true
   end
 
+  def update?
+    true
+  end
+
   def destroy?
     true
   end
