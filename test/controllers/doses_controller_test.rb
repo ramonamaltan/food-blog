@@ -28,7 +28,5 @@ class DosesControllerTest < ActionDispatch::IntegrationTest
     assert_difference "Dose.count", -1 do
       @dose.destroy
     end
-
-    assert_response :no_content
   end
 end

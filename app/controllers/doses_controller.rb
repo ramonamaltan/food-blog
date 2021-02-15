@@ -20,9 +20,10 @@ class DosesController < ApplicationController
   end
 
   def destroy
-    recipe.doses.each do |dose|
-      dose.destroy
-    end
+    @dose = Dose.last
+    authorize @dose
+    @dose.destroy
+    redirect_to new_recipe_dose_path(@recipe)
   end
 
   private
