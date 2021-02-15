@@ -36,7 +36,7 @@ class RecipesController < ApplicationController
   def update
     authorize @recipe
     if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe)
+      redirect_to new_recipe_dose_path(@recipe)
     else
       render :edit
     end

@@ -43,7 +43,7 @@ class RecipeControllerTest < ActionDispatch::IntegrationTest
     login_as @user
     patch recipe_url(@recipe), params: { recipe: { name: 'Another Spanish Dish', user: @user, photo: fixture_file_upload('files/yum.jpg') } }
 
-    assert_redirected_to recipe_url(@recipe)
+    assert_redirected_to new_recipe_dose_url(@recipe)
   end
 
   test "should destroy recipe" do
