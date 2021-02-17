@@ -1,9 +1,14 @@
 <div class="page-container">
-  <h3 class="mb-4">Zutaten hinzufügen</h3>
+  <div class="desktop-button-flex">
+    <h3>Zutaten hinzufügen</h3>
+    <% if @recipe.doses.count > 0 %>
+      <%= link_to 'Fertig', recipe_path(@recipe), class: 'btn btn-petrol my-3' %>
+    <% end %>
+  </div>
 
   <div class="ingredients mb-5">
     <% unless @recipe.ingredients.blank? %>
-      <h5>Bereits hinzugefügt:</h5>
+      <h5>Bereits hinzugefügt</h5>
       <ul><% @recipe.ingredients.each do |ingredient| %>
         <li><%= ingredient.dose.amount %> <%= ingredient.dose.unit %>
         <%= ingredient.name %></li>  
@@ -27,9 +32,6 @@
       <% end %>
     </div>
 
-    <%= form.submit 'Zutat hinzufügen', class: "btn-petrol mt-3 mb-4" %>
+    <%= form.submit 'Zutat hinzufügen', class: "btn-red mt-3 mb-5" %>
   <% end %>
-
-  <%= link_to 'Fertig', recipe_path(@recipe), class: 'btn btn-petrol' %>
-
 </div>
