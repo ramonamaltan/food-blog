@@ -35,7 +35,13 @@
   }
 }
 
-trix-toolbar .trix-button-row {
-  flex-wrap: wrap;
-  justify-content: flex-start;
+trix-toolbar {
+  .trix-button-group {
+    background: white;
+  }
+
+  .trix-button-row {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 }
