@@ -12,15 +12,22 @@
     <%#= link_to 'Löschen', recipe_dose_path(@recipe), method: :delete %>
   </div>
 
-  <%= simple_form_for [@recipe, @dose], html: { class: "form-group"}, remote: true do |f| %>
-    <%= f.input :amount, label: 'Menge', input_html: {class: "form-control"} %>
-    <%= f.input :unit, label: 'Einheit' %>
+  <%= form_with model: @dose, url: recipe_doses_url do |form| %>
+    <div class="form-group">
+      <%= form.text_field :amount, placeholder: 'Menge' , class: "form-control", required: true %>
+    </div>
 
-    <%= f.simple_fields_for :ingredient do |ingredient| %>
-      <%= ingredient.input :name %>
-    <% end %>
+    <div class="form-group">
+      <%= form.text_field :unit, placeholder: 'Einheit' , class: "form-control", required: true %>
+    </div>
 
-    <%= f.submit 'Zutat hinzufügen', class: 'btn btn-petrol mt-3' %>
+    <div class="form-group">
+      <%= form.fields_for :ingredient do |cat_form| %>
+        <%= cat_form.text_field :name, placeholder: 'Name der Zutat', class: "form-control mb-1", required: true  %>
+      <% end %>
+    </div>
+
+    <%= form.submit 'Zutat hinzufügen', class: "btn-petrol mt-3 mb-4" %>
   <% end %>
 
   <%= link_to 'Fertig', recipe_path(@recipe), class: 'btn btn-petrol' %>
