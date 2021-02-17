@@ -14,13 +14,22 @@ class DosesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test "should create dose" do
-  #   login_as users(:one)
+  test "should create dose" do
+    user = users(:one)
+    @recipe2 = Recipe.create(name: 'bananabread', user: user, photo: fixture_file_upload('files/yum.jpg'))
+    login_as user
 
-  #   assert_difference("Dose.count") do
-  #     post recipe_doses_url(@recipe), params: { dose: { unit: 'grams', amount: 200, recipe_id: @recipe.id, ingredient_attributes: { id: @ingredient.id, name: @ingredient.name } } }
-  #   end
-  # end
+    assert_difference("Dose.count", 1) do
+      assert_difference("Ingredient.count", 1) do
+        post recipe_doses_url(@recipe), params: { dose: {
+          unit: 'grams', amount: '200', recipe: recipe,
+          ingredient: Ingredient.create(name: 'potato')
+        } }
+      end
+    end
+
+    assert_redirected_to new_recipe_dose_path(@recipe)
+  end
 
   test 'should destroy dose' do
     @dose = doses(:one)

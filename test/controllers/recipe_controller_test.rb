@@ -52,6 +52,6 @@ class RecipeControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Recipe.count', -1) do
       delete recipe_url(@recipe)
     end
-    assert_response :no_content
+    assert_redirected_to recipes_path
   end
 end

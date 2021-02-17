@@ -17,11 +17,12 @@
     <%= f.input :unit, label: 'Einheit' %>
 
     <%= f.simple_fields_for :ingredient do |ingredient| %>
-    <%= ingredient.input :name %>
+      <%= ingredient.input :name %>
     <% end %>
 
     <%= f.submit 'Zutat hinzufügen', class: 'btn btn-petrol mt-3' %>
-    <% end %>
-    <%= link_to 'Fertig', recipe_path(@recipe), class: 'btn btn-petrol' %>
+  <% end %>
+
+  <%= link_to 'Fertig', recipe_path(@recipe), class: 'btn btn-petrol' %>
 
 </div>
