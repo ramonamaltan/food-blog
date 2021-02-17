@@ -1,34 +1,22 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag('yum.jpg', alt: 'Yum logo')%>
+<header>
+  <nav class="flex flex-jc-sb flex-ai-c px-4">
+    <%= link_to root_path, class: "header_logo" do %>
+      <%= image_tag('yum.jpg', alt: 'Yum logo')%>
     <% end %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <div class="openMenu"><i class="fa fa-bars"></i></div>
+    <ul class="mainMenu header_links flex flex-jc-sa flex-ai-c">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Alle Rezepte", recipes_path %></li>
+      <li><%= link_to "Rezept hinzufügen", new_recipe_path %></li>
 
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      
-        <li class="nav-item active">
-          <%= link_to "Home", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Alle Rezepte", recipes_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Rezept hinzufügen", new_recipe_path, class: "nav-link" %>
-        </li>
       <% if user_signed_in? %>
-        <li>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
-        </li>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "my-3" %>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
+        <%= link_to "Login", new_user_session_path, class: "my-3" %>
       <% end %>
+
+      <div class="closeMenu"><i class="fa fa-times"></i></div>
     </ul>
-  </div>
-</div>
+  </nav>
+</header>

@@ -1,16 +1,91 @@
-.navbar {
-  padding: 0 1rem;
+.header {
+  &_logo {
+    img {
+      width: 3.6rem;
+      height: 2.4rem;
+    }
+  }
+
+  &_links {
+    a {
+      color: black;
+      position: relative;
+      padding-right: 1rem;
+      padding-left: 1rem;
+      margin: 2rem;
+
+      &:hover {
+        color: $red;
+        transition: color 300ms ease-in-out;
+      }
+    }
+  }
 }
 
-.navbar-lewagon {
-  justify-content: space-between;
+nav {
   background: white;
+
+  button {
+    margin-left: 2rem;
+  }
+
+  .mainMenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.closeMenu , .openMenu {
+  font-size: 1.4rem;
+  display: none;
+  cursor: pointer;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 80px;
+@media(max-width: 1023px){
+  .header_links  {
+    a {
+      margin: 0;
+      font-size: 1.4rem;
+      padding: 8px;
+      display: inline-block;
+    }
+  }
+  
+  nav {
+    background: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    button {
+      margin: 0;
+    }
+
+    .mainMenu {
+      height: 90vh;
+      position: fixed;
+      top: 10vh;
+      right: 0;
+      left: 0;
+      z-index: 1;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: $rose;
+      transition: top 300ms ease;
+      display: none;
+    }
+
+    .mainMenu .closeMenu {
+      display: block;
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+    }
+
+    .openMenu {
+      display: block;
+    }
+  }
+  
 }
