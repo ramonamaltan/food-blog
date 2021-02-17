@@ -5,12 +5,12 @@
   </div>
 
   <%= form_tag recipes_path, method: :get do %>
-    <%= text_field_tag :search, params[:search], class: "form-control mb-2", placeholder: "Finde ein Rezept" %>
+    <%= text_field_tag :search, params[:search], class: "form-control my-3", placeholder: "Finde ein Rezept" %>
     <%= label_tag :recent, 'Neue zuerst' %>
     <%= check_box_tag :recent, params[:recent] %>
     <%= label_tag :alphabetical, 'A-Z' %>
     <%= check_box_tag :alphabetical, params[:alphabetical] %>
-    <%= submit_tag "Suchen", class: "btn-petrol mt-1 mb-5" %>
+    <%= submit_tag "Suchen", class: "btn-text mt-1 mb-5" %>
   <% end %>
 
   <div class="cards">

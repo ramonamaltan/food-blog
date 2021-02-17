@@ -1,6 +1,6 @@
 .btn-petrol {
   color: white;
-  padding: 12px 24px;
+  padding: 12px;
   border-radius: 4px;
   background: $blue;
   transition: background 0.3s ease;
@@ -11,4 +11,35 @@
 .btn-petrol:hover {
   background: #1e8eb1;
   color: white;
+}
+
+.btn-red {
+  color: white;
+  padding: 12px;
+  border-radius: 4px;
+  background: $red;
+  transition: background 0.3s ease;
+  border: none;
+  display: inline-block;
+}
+
+.btn-red:hover {
+  background: $off-red;
+  color: white;
+}
+
+.btn-text {
+  background-color: $rose;
+  text-decoration: underline;
+  color: $red;
+  font-size: 1.12rem;
+  font-weight: 500;
+  border: none;
+  display: inline-block;
+}
+
+.btn-text:hover {
+  background-color: $rose;
+  color: $red;
+  text-decoration: none;
 }
