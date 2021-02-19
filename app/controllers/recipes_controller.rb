@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.includes(:doses, :ingredients).find(params[:id])
     authorize @recipe
     @favorite_recipe = FavoriteRecipe.new
+    @favorite_exists = FavoriteRecipe.where(recipe: @recipe, user: current_user).count.positive?
   end
 
   def new

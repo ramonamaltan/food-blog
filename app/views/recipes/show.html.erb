@@ -4,8 +4,12 @@
   <%= link_to 'Rezept bearbeiten', edit_recipe_path(@recipe), class: 'btn-petrol my-3' %>
   </div>
 
-  <%= form_with model: @favorite_recipe, url: recipe_favorite_recipes_url(@recipe), remote: true do |form| %>
-    <%= form.submit class: 'btn-text' %>
+  <%= form_with model: @favorite_recipe, url: recipe_favorite_recipes_url(@recipe) do |form| %>
+    <% if @favorite_exists %>
+      <%= form.submit 'Unfavorite', class: 'btn-text' %>
+    <% else %>
+      <%= form.submit 'Favorite', class: 'btn-text' %>
+    <% end %>
   <% end %>
 
   <div class="desktop-flex my-5">
