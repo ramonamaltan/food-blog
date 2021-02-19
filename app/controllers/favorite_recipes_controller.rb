@@ -1,4 +1,7 @@
 class FavoriteRecipesController < ApplicationController
+  def index
+    @favorite_recipes = policy_scope(FavoriteRecipe).where(user: current_user)
+  end
 
   def create
     @recipe = Recipe.find(params[:recipe_id])

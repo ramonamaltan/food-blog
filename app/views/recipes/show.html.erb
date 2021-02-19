@@ -4,9 +4,9 @@
   <%= link_to 'Rezept bearbeiten', edit_recipe_path(@recipe), class: 'btn-petrol my-3' %>
   </div>
 
-  <%= form_with model: @favorite_recipe, url: recipe_favorite_recipes_url(@recipe) do |form| %>
+  <%= form_with model: @favorite_recipe, url: recipe_favorite_recipes_url(@recipe), local: true do |form| %>
     <% if @favorite_exists %>
-      <%= form.submit 'Unfavorite', class: 'btn-text' %>
+      <%= form.submit 'Unfavorite', class: 'btn-text', id: 'favorite' %>
     <% else %>
       <%= form.submit 'Favorite', class: 'btn-text' %>
     <% end %>
