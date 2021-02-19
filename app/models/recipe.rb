@@ -2,6 +2,7 @@ class Recipe < ApplicationRecord
   include PgSearch::Model
 
   belongs_to :user
+  has_many :favorite_recipes
   has_many :categories, dependent: :destroy
   has_many :doses, dependent: :destroy
   has_many :ingredients, through: :doses
