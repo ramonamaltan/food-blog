@@ -6,9 +6,12 @@ class FavoriteRecipesControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
   end
 
-  test "should get index" do
+  test "should create favorite recipe" do
     login_as @user
-    get recipe_favorite_recipes_path(@recipe)
-    assert_response :success
+
+    assert_difference('FavoriteRecipe.count') do
+      post recipe_favorite_recipes_path(@recipe), params: { favorite_recipe: {recipe: @recipe, user: @user} }
+    end
+    assert_redirected_to recipe_path(@recipe)
   end
 end
