@@ -6,10 +6,9 @@
 
     <div class="openMenu"><i class="fa fa-bars"></i></div>
     <ul class="mainMenu header_links flex flex-jc-sa flex-ai-c">
-      <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "Alle Rezepte", recipes_path %></li>
-      <li><%= link_to "Rezept hinzufügen", new_recipe_path %></li>
-
+      <li><%= link_to "Rezept hinzufügen", new_recipe_path if @admin %></li>
+      <li><%= link_to "Meine Favoriten", favorite_recipes_path %></li>
       <% if user_signed_in? %>
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "my-3" %>
       <% else %>

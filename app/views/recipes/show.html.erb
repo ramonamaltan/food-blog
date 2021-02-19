@@ -1,7 +1,7 @@
 <div class="page-container">
   <div class="desktop-button-flex">
   <h1><%= @recipe.name %></h1>
-  <%= link_to 'Rezept bearbeiten', edit_recipe_path(@recipe), class: 'btn-petrol my-3' %>
+  <%= link_to 'Rezept bearbeiten', edit_recipe_path(@recipe), class: 'btn-petrol my-3' if @admin %>
   </div>
 
   <%= form_with model: @favorite_recipe, url: recipe_favorite_recipes_url(@recipe), local: true do |form| %>
