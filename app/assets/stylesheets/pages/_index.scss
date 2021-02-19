@@ -12,13 +12,32 @@ body {
   margin: 0 auto;
   margin-top: 8%;
   margin-bottom: 12%;
-  max-width: 75vw;
+  max-width: 94vw;
 }
 
-@media (min-width: 1000px) {
+.mobile-container {
+  margin: 0 auto;
+  max-width: 85vw;
+}
+
+@media (min-width: 450px) and (max-width: 999px) {
   .page-container {
     margin-top: 4%;
-    max-width: 60vw;
+    max-width: 85vw;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1999px) {
+  .page-container {
+    margin-top: 4%;
+    max-width: 75vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .page-container {
+    margin-top: 4%;
+    max-width: 65vw;
   }
 }
 

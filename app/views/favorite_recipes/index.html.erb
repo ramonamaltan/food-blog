@@ -5,7 +5,7 @@
     <% @favorite_recipes.each do |fav| %>
       <div class="recipe-card">
       <% if fav.recipe.photo.attached? %>
-        <%= cl_image_tag fav.recipe.photo.key, height: 300, width: 400, crop: :fill %>
+        <%= cl_image_tag fav.recipe.photo.key, crop: :fill %>
       <% end %>
         
         <div class="recipe-infos">
