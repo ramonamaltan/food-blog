@@ -5,6 +5,8 @@ class RecipesController < ApplicationController
     @recipes = Recipe.search_by_name(params[:search]) if params[:search].present?
     @recipes = Recipe.sort_by_most_recent if params[:recent].present?
     @recipes = Recipe.sort_by_alphabet if params[:alphabetical].present?
+    # category = Category.find(params[:categories][:category].to_i)
+    # @recipes = category.recipe
   end
 
   def show
