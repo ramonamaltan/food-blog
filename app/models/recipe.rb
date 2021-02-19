@@ -27,5 +27,4 @@ class Recipe < ApplicationRecord
 
   scope :sort_by_most_recent, lambda { order(:created_at) }
   scope :sort_by_alphabet, lambda { order(:name) }
-  # scope :sort_by_ingredient
 end
