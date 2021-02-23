@@ -43,3 +43,18 @@
   color: $red;
   text-decoration: none;
 }
+
+.btn-text-white {
+  background-color: white;
+  color: $red;
+  font-size: 1.12rem;
+  font-weight: 500;
+  border: none;
+  display: inline-block;
+}
+
+.btn-text-white:hover {
+  background-color: white;
+  color: $red;
+  text-decoration: none;
+}
