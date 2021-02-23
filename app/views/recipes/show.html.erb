@@ -1,46 +1,52 @@
 <div class="page-container">
-  <div class="desktop-button-flex">
-  <h1><%= @recipe.name %></h1>
-  <%= link_to 'Rezept bearbeiten', edit_recipe_path(@recipe), class: 'btn-petrol my-3' if @admin %>
-  </div>
-
-  <%= form_with model: @favorite_recipe, url: recipe_favorite_recipes_url(@recipe) do |form| %>
-    <%= button_tag type: 'submit', class: 'btn-text', id: 'btn-heart' do %>
-      <% if @favorite_exists %>
-        <i class="fas fa-heart" id='icon-heart'></i>
-      <% else %>
-        <i class="far fa-heart" id='icon-heart'></i>
-      <% end %>
-    <% end %>
-  <% end %>
-
-  <div class="desktop-flex my-5">
-    <div class="main-image">
-      <% if @recipe.photo.attached? %>
-        <%= cl_image_tag @recipe.photo.key, height: 300, width: 270, crop: :fill %>
-      <% end %>
-    </div>
-
-    <div class="ingredients">
-      <h4>Zutaten</h4>
-      <ul>
-        <% @recipe.doses.each do |dose| %>
-          <li><%= dose.amount %> <%= dose.unit %>
-          <%= dose.ingredient.name %></li>
+  <div class="mobile-container">
+    <div class="desktop-button-flex">
+      <div class="flex">
+        <h1><%= @recipe.name %></h1>
+        <%= form_with model: @favorite_recipe, url: recipe_favorite_recipes_url(@recipe) do |form| %>
+          <%= button_tag type: 'submit', class: 'btn-text', id: 'btn-heart' do %>
+            <% if @favorite_exists %>
+              <i class="fas fa-heart" id='icon-heart'></i>
+            <% else %>
+              <i class="far fa-heart" id='icon-heart'></i>
+            <% end %>
+          <% end %>
         <% end %>
-      </ul>
+      </div>
+      <%= link_to 'Rezept bearbeiten', edit_recipe_path(@recipe), class: 'btn-text my-3' if @admin %>
     </div>
-  </div>
 
-  <div class="steps">
+    <ul class="mb-4">
     <% @recipe.categories.each do |category| %>
-      <%= category.name %>
+      <li><%= category.name %></li>
     <% end %> 
-    <h4>Zubereitung</h4>
-    <div class="cooking-steps">
-      <%= @recipe.description %>
-    </div>
-  </div>
+    </ul>
 
-  <%= link_to 'Alle Rezepte', recipes_path, class: 'btn-text my-5' %>
+    <div class="desktop-flex my-3">
+      <div class="main-image">
+        <% if @recipe.photo.attached? %>
+          <%= cl_image_tag @recipe.photo.key, height: 300, width: 300, crop: :fill %>
+        <% end %>
+      </div>
+
+      <div class="ingredients">
+        <h4>Zutaten</h4>
+        <ul>
+          <% @recipe.doses.each do |dose| %>
+            <li><%= dose.amount %> <%= dose.unit %>
+            <%= dose.ingredient.name %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="steps mt-4">
+      <h4>Zubereitung</h4>
+      <div class="cooking-steps mx-2">
+        <%= @recipe.description %>
+      </div>
+    </div>
+
+    <%= link_to 'Alle Rezepte', recipes_path, class: 'btn-petrol my-5' %>
+  </div>
 </div>

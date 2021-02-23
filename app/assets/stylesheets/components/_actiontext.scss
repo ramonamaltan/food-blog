@@ -45,3 +45,8 @@ trix-toolbar {
     justify-content: flex-start;
   }
 }
+
+trix-editor {
+  min-height: 8em;
+  overflow: auto;
+}

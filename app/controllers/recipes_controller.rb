@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @admin = current_user.admin == true
     @recipe = Recipe.includes(:doses, :ingredients).find(params[:id])
     authorize @recipe
     @favorite_recipe = FavoriteRecipe.new
