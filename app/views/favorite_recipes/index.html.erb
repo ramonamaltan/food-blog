@@ -1,21 +1,29 @@
 <div class="page-container">
-    <h2 class="mb-4">Lieblings-Rezepte</h2>
+    <h2 class="mb-5">Lieblings-Rezepte</h2>
 
   <div class="cards">
     <% @favorite_recipes.each do |fav| %>
       <div class="recipe-card">
-      <% if fav.recipe.photo.attached? %>
-        <%= cl_image_tag fav.recipe.photo.key, crop: :fill %>
-      <% end %>
+        <% if fav.recipe.photo.attached? %>
+          <%= cl_image_tag fav.recipe.photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
         
         <div class="recipe-infos">
-          <h2 class="mb-2"><%= link_to fav.recipe.name, recipe_path(fav.recipe) %></h2>
-          <ul class="mb-2">
-            <% fav.recipe.categories.each do |category| %>
-              <li><%= category.name %></li>
-            <% end %> 
-          </ul>
+          <div class="flex flex-jc-sb mb-2">
+            <h2 style="max-width: 82%;"><%= link_to fav.recipe.name, recipe_path(fav.recipe) %></h2>
+            <%= form_with model: @favorite_recipe, url: recipe_favorite_recipes_url(fav.recipe) do |form| %>
+              <%= button_tag type: 'submit', class: 'btn-text-white', id: 'btn-heart', style:'padding:0;' do %>
+                <% if FavoriteRecipe.where(recipe: fav.recipe, user: current_user).count.positive? %>
+                  <i class="fas fa-heart" id='icon-heart'></i>
+                <% else %>
+                  <i class="far fa-heart" id='icon-heart'></i>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
         </div>
+
       </div>
     <% end %>
   </div>
+</div>
