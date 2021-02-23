@@ -11,7 +11,7 @@ body {
 .page-container {
   margin: 0 auto;
   margin-top: 8%;
-  margin-bottom: 12%;
+  margin-bottom: 20%;
   max-width: 94vw;
 }
 
@@ -22,21 +22,21 @@ body {
 
 @media (min-width: 450px) and (max-width: 999px) {
   .page-container {
-    margin-top: 4%;
+    margin-top: 8%;
     max-width: 85vw;
   }
 }
 
 @media (min-width: 1000px) and (max-width: 1999px) {
   .page-container {
-    margin-top: 4%;
+    margin-top: 8%;
     max-width: 75vw;
   }
 }
 
 @media (min-width: 1200px) {
   .page-container {
-    margin-top: 4%;
+    margin-top: 8%;
     max-width: 65vw;
   }
 }
