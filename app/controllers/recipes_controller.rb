@@ -7,7 +7,9 @@ class RecipesController < ApplicationController
     @recipes = Recipe.sort_by_alphabet if params[:alphabetical].present?
     # category = Category.find(params[:categories][:category].to_i)
     # @recipes = category.recipe
-    @admin = current_user.admin == true 
+    @admin = current_user.admin == true
+
+    @favorite_recipe = FavoriteRecipe.new
   end
 
   def show

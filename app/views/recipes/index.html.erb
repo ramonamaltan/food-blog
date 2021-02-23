@@ -38,13 +38,18 @@
           <h2 class="mb-2"><%= link_to recipe.name, recipe_path(recipe) %></h2>
           <%= link_to "Löschen", recipe, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'delete' if @admin %>
         </div>
-          <%= form_with model: @favorite_recipe, url: recipe_favorite_recipes_url(recipe), local: true do |form| %>
-            <% if @favorite_exists %>
-              <%= form.submit 'Unfavorite', class: 'btn-text', id: 'favorite' %>
-            <% else %>
-              <%= form.submit 'Favorite', class: 'btn-text' %>
-            <% end %>
-          <% end %>
+
+  <%= form_with model: @favorite_recipe, url: recipe_favorite_recipes_url(recipe) do |form| %>
+    <%= button_tag type: 'submit', class: 'btn-text', id: 'btn-heart' do %>
+      <% if FavoriteRecipe.where(recipe: recipe, user: current_user).count.positive? %>
+        <i class="fas fa-heart" id='icon-heart'></i>
+      <% else %>
+        <i class="far fa-heart" id='icon-heart'></i>
+      <% end %>
+    <% end %>
+  <% end %>
+
+
       </div>
     <% end %>
   </div>

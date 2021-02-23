@@ -1,11 +1,13 @@
 const initFavoritesToggle = () => {
-  const btnHeart = document.getElementById('btn-heart');
-  const iconHeart = document.getElementById('icon-heart');
+  const btnsHeart = document.querySelectorAll('#btn-heart');
+  const iconsHeart = document.querySelectorAll('#icon-heart');
 
-  btnHeart.addEventListener('click', function() {
-    iconHeart.classList.toggle('far');
-    iconHeart.classList.toggle('fas');
-  })
+  for(let i = 0; i < btnsHeart.length; i++) {
+    btnsHeart[i].addEventListener('click', function() {
+      iconsHeart[i].classList.toggle('far');
+      iconsHeart[i].classList.toggle('fas');
+    })
+  }
 }
 
 export { initFavoritesToggle };

@@ -5,7 +5,7 @@ class FavoriteRecipesController < ApplicationController
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
-    favorite_exists = FavoriteRecipe.where(recipe: @recipe, user: current_user)
+    favorite_exists = FavoriteRecipe.where(recipe: @recipe, user: 1)
     authorize favorite_exists
     if favorite_exists.count.positive?
       favorite_exists.destroy_all
@@ -13,7 +13,7 @@ class FavoriteRecipesController < ApplicationController
       @favorite_recipe = FavoriteRecipe.new(recipe: @recipe, user: current_user)
       authorize @favorite_recipe
       if @favorite_recipe.save
-        redirect_to recipe_path(@recipe)
+        redirect_back(fallback_location: root_path)
       else
         render 'recipes/show'
       end
