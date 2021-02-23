@@ -25,6 +25,6 @@ class Recipe < ApplicationRecord
       tsearch: { prefix: true, any_word: true }
     }
 
-  scope :sort_by_most_recent, lambda { order(:created_at) }
+  scope :sort_by_most_recent, lambda { order(created_at: :desc) }
   scope :sort_by_alphabet, lambda { order(:name) }
 end

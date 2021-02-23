@@ -1,14 +1,11 @@
 class RecipesController < ApplicationController
   before_action :find_recipe, only: [:edit, :update, :destroy]
   def index
+    @admin = current_user.admin == true
     @recipes = policy_scope(Recipe).where(nil)
     @recipes = Recipe.search_by_name(params[:search]) if params[:search].present?
     @recipes = Recipe.sort_by_most_recent if params[:recent].present?
     @recipes = Recipe.sort_by_alphabet if params[:alphabetical].present?
-    # category = Category.find(params[:categories][:category].to_i)
-    # @recipes = category.recipe
-    @admin = current_user.admin == true
-
     @favorite_recipe = FavoriteRecipe.new
   end
 
