@@ -17,8 +17,10 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { initNavbarToggle } from '../components/init_navbar_toggle';
+import { initFavoritesToggle } from '../components/init_favorites_toggle';
 
 document.addEventListener('turbolinks:load', () => {
   initNavbarToggle();
+  initFavoritesToggle();
 });
 
