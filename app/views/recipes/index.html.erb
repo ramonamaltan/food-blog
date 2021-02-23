@@ -35,8 +35,8 @@
         <% end %>
         
         <div class="recipe-infos">
-          <div class="flex flex-jc-sb flex-ai-c mb-2">
-            <h2><%= link_to recipe.name, recipe_path(recipe) %></h2>
+          <div class="flex flex-jc-sb mb-2">
+            <h2 style="max-width: 88%;"><%= link_to recipe.name, recipe_path(recipe) %></h2>
             <%= form_with model: @favorite_recipe, url: recipe_favorite_recipes_url(recipe) do |form| %>
               <%= button_tag type: 'submit', class: 'btn-text-white', id: 'btn-heart', style:'padding:0;' do %>
                 <% if FavoriteRecipe.where(recipe: recipe, user: current_user).count.positive? %>
