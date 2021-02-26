@@ -2,19 +2,7 @@
   <div class="mobile-container">
     <h1 class="mb-4">Alle Rezepte</h1>
 
-    <div class="search-form-control">
-      <%= form_tag recipes_path, method: :get do |form| %>
-        <%= text_field_tag :search, params[:search], class: "form-control mb-3", placeholder: "Finde ein Rezept mit Name, Küche oder Zutaten" %>
-        <%= submit_tag "Suchen", class: "btn btn-red" %>
-      <% end %>
-    </div>
-
-    <%= form_with model: @recipe, method: :get, class: 'mb-4' do |form| %> 
-      <%= form.label :recent, 'Neue zuerst' %>
-      <%= check_box_tag :recent, true, (params[:alphabetical] == 'true'), onclick: 'this.form.submit()' %>
-      <%= form.label :alphabetical, 'A-Z' %>
-      <%= check_box_tag :alphabetical, true, (params[:alphabetical] == 'true'), onclick: 'this.form.submit()' %>
-    <% end %>
+    <%= render "search_and_filters" %>
   </div>
 
   <div class="cards">
@@ -27,19 +15,11 @@
         <div class="recipe-infos">
           <div class="flex flex-jc-sb mb-2">
             <h2 style="max-width: 82%;"><%= link_to recipe.name, recipe_path(recipe) %></h2>
-            <%= form_with model: @favorite_recipe, url: recipe_favorite_recipes_url(recipe) do |form| %>
-              <%= button_tag type: 'submit', class: 'btn-text-white', id: 'btn-heart', style:'padding:0;' do %>
-                <% if FavoriteRecipe.where(recipe: recipe, user: current_user).count.positive? %>
-                  <i class="fas fa-heart" id='icon-heart'></i>
-                <% else %>
-                  <i class="far fa-heart" id='icon-heart'></i>
-                <% end %>
-              <% end %>
-            <% end %>
+
+            <%= render partial: "favorite_recipe_form_index", locals: {recipe: recipe} %>
           </div>
           <%= link_to "Löschen", recipe, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'delete' if @admin %>
         </div>
-
       </div>
     <% end %>
   </div>

@@ -3,15 +3,7 @@
     <div class="desktop-button-flex">
       <div class="flex">
         <h1><%= @recipe.name %></h1>
-        <%= form_with model: @favorite_recipe, url: recipe_favorite_recipes_url(@recipe) do |form| %>
-          <%= button_tag type: 'submit', class: 'btn-text', id: 'btn-heart' do %>
-            <% if @favorite_exists %>
-              <i class="fas fa-heart" id='icon-heart'></i>
-            <% else %>
-              <i class="far fa-heart" id='icon-heart'></i>
-            <% end %>
-          <% end %>
-        <% end %>
+        <%= render "favorite_recipe_form_show" %>
       </div>
       <%= link_to 'Rezept bearbeiten', edit_recipe_path(@recipe), class: 'btn-text my-3' if @admin %>
     </div>

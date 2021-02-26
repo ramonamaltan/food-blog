@@ -1,23 +1,5 @@
 <div class="page-container">
   <h3 class="mb-4">Rezept bearbeiten</h3>
-  <%= form_with model: @recipe do |form| %>
-    <div class="form-group">
-      <%= form.text_field :name, placeholder: 'Name für dein Rezept' , class: "form-control", required: true %>
-    </div>
 
-    <div class="form-group">
-      <%= form.fields_for :categories do |cat_form| %>
-        <%= cat_form.text_field :name, placeholder: 'Rezeptkategorie', class: "form-control", required: true  %>
-      <% end %>
-    </div>
-
-    <div class="form-group mt-5">
-      <%= form.rich_text_area :description, placeholder: 'Beschreibe die Zubereitung Schritt für Schritt' , class: "form-control" %>
-    </div>
-    <div class="form-group mt-5 mb-5">
-      <i class="fas fa-camera-retro"></i>  <%= form.label :photo, 'Lade ein Foto hoch' %>  <i class="fas fa-camera-retro"></i>
-      <%= form.file_field :photo, style: 'width: 60vw;' %>
-    </div>
-    <%= form.submit 'Zutaten bearbeiten', class: "btn-petrol" %>
-  <% end %>
+  <%= render 'edit_recipe_form' %>
 </div>

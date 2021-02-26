@@ -1,0 +1,9 @@
+<%= form_with model: @favorite_recipe, url: recipe_favorite_recipes_url(recipe) do |form| %>
+  <%= button_tag type: 'submit', class: 'btn-text-white', id: 'btn-heart', style:'padding:0;' do %>
+    <% if FavoriteRecipe.where(recipe: recipe, user: current_user).count.positive? %>
+      <i class="fas fa-heart" id='icon-heart'></i>
+    <% else %>
+      <i class="far fa-heart" id='icon-heart'></i>
+    <% end %>
+  <% end %>
+<% end %>

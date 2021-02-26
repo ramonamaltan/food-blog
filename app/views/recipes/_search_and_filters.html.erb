@@ -1,0 +1,13 @@
+<div class="search-form-control">
+  <%= form_tag recipes_path, method: :get do |form| %>
+    <%= text_field_tag :search, params[:search], class: "form-control mb-3", placeholder: "Finde ein Rezept mit Name, Küche oder Zutaten" %>
+    <%= submit_tag "Suchen", class: "btn btn-red" %>
+  <% end %>
+</div>
+
+<%= form_with model: @recipe, method: :get, class: 'mb-4' do |form| %> 
+  <%= form.label :recent, 'Neue zuerst' %>
+  <%= check_box_tag :recent, true, (params[:alphabetical] == 'true'), onclick: 'this.form.submit()' %>
+  <%= form.label :alphabetical, 'A-Z' %>
+  <%= check_box_tag :alphabetical, true, (params[:alphabetical] == 'true'), onclick: 'this.form.submit()' %>
+<% end %>
