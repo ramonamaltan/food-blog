@@ -13,10 +13,16 @@ class FavoriteRecipesController < ApplicationController
       @favorite_recipe = FavoriteRecipe.new(recipe: @recipe, user: current_user)
       authorize @favorite_recipe
       if @favorite_recipe.save
-        redirect_back(fallback_location: root_path)
+        redirect_to back_with_anchor anchor: @recipe.id
       else
         render 'recipes/show'
       end
     end
+  end
+
+  private
+
+  def back_with_anchor(anchor: '')
+    "#{request.referrer}##{anchor}"
   end
 end
